@@ -1,11 +1,13 @@
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Main {
     private static final String HMAC_SHA256 = "HmacSHA256";
@@ -73,7 +75,10 @@ public class Main {
                 System.out.println("Your move: " + move);
                 System.out.println("Comp move: " + compMove);
 
-                if(list.distanceBetween(list.get(compChoice),list.get(choice)) <= list.getSize()/2){
+                if(list.distanceBetween(list.get(compChoice),list.get(choice)) == 0){
+                    System.out.println("DRAW!");
+                }
+                else if(list.distanceBetween(list.get(compChoice),list.get(choice)) <= list.getSize()/2){
                     System.out.println("You WIN!");
                 }
                 else {
